@@ -2,29 +2,350 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Freelance Tech Provider Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cratag - Software Engineering Services</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #f8f8f8;
+      --bg-secondary: #ffffff;
+      --text-primary: #1f1f1f;
+      --text-secondary: #4a4a4a;
+      --accent: #2c3e50;
+      --accent-light: #34495e;
+      --border: #e5e5e5;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 6rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .cta-button:hover {
+      background-color: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(44, 62, 80, 0.2);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 6rem 0;
+      background-color: var(--bg-secondary);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 4rem;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background-color: var(--bg-primary);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      border-color: var(--accent);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* About Section */
+    .about {
+      padding: 6rem 0;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 6rem 0;
+      background-color: var(--bg-secondary);
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-info {
+      margin-top: 2rem;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 5rem 0 4rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body>
-  <h1>Technical Services for WhatsApp Business API</h1>
+  <header>
+    <nav class="container">
+      <a href="#" class="logo">Cratag</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <p>I am an independent freelancer providing technical setup and integration services for small businesses, focused on WhatsApp Business API onboarding and support.</p>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Software Engineering<br>That Delivers</h1>
+        <p>Building robust, scalable solutions with clean code and modern practices. From architecture to deployment, I bring your ideas to life.</p>
+        <a href="#contact" class="cta-button">Get in Touch</a>
+      </div>
+    </section>
 
-  <h2>Services</h2>
-  <ul>
-    <li>WhatsApp Business API setup and configuration</li>
-    <li>Facebook Business and number verification support</li>
-    <li>Basic integration, troubleshooting and ongoing technical assistance</li>
-  </ul>
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Custom Development</h3>
+            <p>Tailored software solutions designed to meet your specific business needs. Full-stack development with modern technologies and best practices.</p>
+          </div>
+          <div class="service-card">
+            <h3>System Architecture</h3>
+            <p>Designing scalable, maintainable systems that grow with your business. From microservices to monolithic architectures, optimized for your use case.</p>
+          </div>
+          <div class="service-card">
+            <h3>API Integration</h3>
+            <p>Seamless integration with third-party services and APIs. Building reliable connections that enhance your platform's capabilities.</p>
+          </div>
+          <div class="service-card">
+            <h3>Code Review & Optimization</h3>
+            <p>Improving code quality, performance, and maintainability. Refactoring legacy code and implementing modern patterns.</p>
+          </div>
+          <div class="service-card">
+            <h3>Technical Consulting</h3>
+            <p>Strategic guidance on technology decisions, architecture choices, and development processes to help you build better software.</p>
+          </div>
+          <div class="service-card">
+            <h3>DevOps & Deployment</h3>
+            <p>Setting up CI/CD pipelines, containerization, cloud infrastructure, and automated deployment workflows for reliable releases.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <h2>Use of Data</h2>
-  <p>
-    Platform data is only used to help clients send expected messages to their customers
-    (such as notifications and support replies). I do not resell, share or reuse this
-    data for any other purpose.
-  </p>
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-content">
+          <h2 class="section-title">About</h2>
+          <p>
+            Cratag is a software engineering practice focused on delivering high-quality solutions.
+            I combine technical expertise with a deep understanding of business needs to create software
+            that not only works but thrives in production.
+          </p>
+          <p>
+            Every project is approached with attention to detail, clean code principles, and a commitment
+            to building maintainable systems that stand the test of time.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <h2>Contact</h2>
-  <p>Email: devcratag@gmail.com</p>
-  <p>Location: Argentina</p>
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-content">
+          <h2 class="section-title">Contact</h2>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:devcratag@gmail.com">devcratag@gmail.com</a></p>
+            <p><strong>Location:</strong> Argentina</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="current-year">1312</span> Cratag. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
